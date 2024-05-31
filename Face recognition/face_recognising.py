@@ -21,9 +21,12 @@ known_face_names = ["Gyanendra", "Anmol"]
 # Create a list of students
 students = known_face_names.copy()
 
+face_locations=[]
+face_encoding=[]
+
 # Get the current date and create/open a CSV file
 now = datetime.now()
-current_date = now.strftime("%d-%m-%Y")
+current_date = now.strftime("%Y-%m-%d")
 f = open(f"{current_date}.csv", "w+", newline="")
 lnwrite = csv.writer(f)
 
@@ -52,14 +55,15 @@ while True:
                 bottom_left_corner_of_text = (10, 100)
                 font_scale = 1.5
                 font_color = (255, 0, 0)
-                thickness = 2
+                thickness = 3
                 line_type = 2
                 cv2.putText(frame, name + " Present", bottom_left_corner_of_text, font, font_scale, font_color, thickness, line_type)
                 # Remove the student from the list of students
-                students.remove(name)
+                if name in students :
+                 students.remove(name)
                 # Get current time and write to CSV
-                current_time = now.strftime("%H-%m-%S")
-                lnwrite.writerow([name, current_time])
+                 current_time = now.strftime("%H-%m-%S")
+                 lnwrite.writerow([name, current_time])
 
     # Display the frame with attendance information
     cv2.imshow("Attendance", frame)
