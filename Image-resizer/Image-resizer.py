@@ -2,7 +2,7 @@ import cv2
 
 try:
     # Read the input image
-    image = cv2.imread("Images/image.jpg", cv2.IMREAD_UNCHANGED)
+    image = cv2.imread("Images/image.jpg", cv2.IMREAD_UNCHANGED )
 
     # Check if the image is loaded successfully
     if image is None:
